@@ -5,7 +5,7 @@ A simple Blockchain example concept implemented in an API made with Golang
 
 **Important**: When you run the application, a temporary json file will be created in the folder ```/tmp/chain.json```
 
-####Checking the chain
+#### Checking the chain
 
 In the chain there will be only the genesis block at the beginning.
 
@@ -25,7 +25,7 @@ GET: ```/chain```
 
 ```
 
-####Create and Add a new block to the chain
+#### Create and Add a new block to the chain
 
 POST: ```/block```
 
