@@ -11,14 +11,15 @@ import (
 
 func CreateBlockServices(data string) (domain.Block, error) {
 
-	// index int64, timestamp time.Time, data string, previousHash string
 	var block domain.Block
 	var previousHash string
 
-	block.Index = 1
+	lastBlock := GetLastestBlock()
+
+	block.Index = lastBlock.Index + 1
 	block.DateCreated = time.Now()
 	block.Hash = GenerateHash(1, time.Now(), data, previousHash)
-	block.PreviousHash = previousHash
+	block.PreviousHash = lastBlock.Hash
 	block.Data = data
 
 	return block, nil

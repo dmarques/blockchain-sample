@@ -5,9 +5,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/blockchain-sample/config"
 	"github.com/blockchain-sample/domain"
 	"github.com/blockchain-sample/services"
+	"github.com/blockchain-sample/utils"
 )
 
 func CreateNewBlock(c *gin.Context) {
@@ -27,12 +27,12 @@ func CreateNewBlock(c *gin.Context) {
 	}
 
 	//Add new Block
-	// services.AddNewBlock()
+	services.AddNewBlock(block)
 
 	c.JSON(http.StatusOK, block.Hash)
 }
 
 func GetBlockchain(c *gin.Context) {
 
-	c.JSON(http.StatusOK, config.ReadFileAndParse())
+	c.JSON(http.StatusOK, utils.ReadFileAndParse())
 }
