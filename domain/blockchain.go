@@ -2,14 +2,10 @@ package domain
 
 import "time"
 
-type Block struct {
+type BlockChain []struct {
 	Index        int64     `json:"index"`
 	DateCreated  time.Time `json:"date_created"`
 	Data         string    `json:"data"`
 	PreviousHash string    `json:"previous_hash"`
 	Hash         string    `json:"hash"`
-}
-
-type DataTransaction struct {
-	Data string `json:"data"`
 }
