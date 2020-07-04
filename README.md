@@ -1,7 +1,7 @@
 # Blockchain sample API
 A simple Blockchain example concept implemented in an API made with Golang
 
-[![NPM Version][npm-image]][npm-url]
+
 
 **Important**: When you run the application, a temporary json file will be created in the folder ```/tmp/chain.json```
 
