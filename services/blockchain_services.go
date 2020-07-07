@@ -15,19 +15,22 @@ func CreateGenesisBlock() domain.Block {
 		DateCreated:  time.Now(),
 		Data:         "genesis_block",
 		PreviousHash: "",
-		Hash:         GenerateHash(0, time.Now(), "genesis_block", ""),
+		Hash:         GenerateHash(0, time.Now(), "genesis_block", "", 0),
+		Nonce:        0,
 	}
 }
 
 func AddNewBlock(block domain.Block) {
 
+	//Difficulty to mine
+	difficulty := 4
+
+	//Mining the new Block
+	Mine(difficulty, &block)
+
 	//parser arquivo /tmp/json e add
 	chain := utils.ReadFileAndParse()
 	chain = append(chain, block)
-
-	// gBlock := &domain.BlockChain{
-	// 	services.CreateGenesisBlock(),
-	// }
 
 	//Convert Struct to JSON File
 	b, err := json.Marshal(chain)

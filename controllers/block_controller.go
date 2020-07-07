@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -25,6 +26,8 @@ func CreateNewBlock(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, "Error")
 	}
+
+	log.Println("Block created: ", block)
 
 	//Add new Block
 	services.AddNewBlock(block)

@@ -8,6 +8,7 @@ type Block struct {
 	Data         string    `json:"data"`
 	PreviousHash string    `json:"previous_hash"`
 	Hash         string    `json:"hash"`
+	Nonce        int64     `json:"nounce"`
 }
 
 type DataTransaction struct {
