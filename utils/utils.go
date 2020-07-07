@@ -9,7 +9,25 @@ import (
 	"github.com/blockchain-sample/domain"
 )
 
-func ReadFileAndParse() []domain.Block {
+func CreateChainFile(data string) {
+	CreateAndWriteToFile(data, "/tmp/chain.json")
+}
+
+func CreatePendingTransactionFile(data string) {
+	CreateAndWriteToFile(data, "/tmp/pending_transactions.json")
+}
+
+func ReadPendingTransactionFile() []domain.Transaction {
+
+	file, _ := ioutil.ReadFile("/tmp/pending_transactions.json")
+
+	data := []domain.Transaction{}
+	_ = json.Unmarshal([]byte(file), &data)
+
+	return data
+}
+
+func ReadChainFileAndParse() []domain.Block {
 
 	file, _ := ioutil.ReadFile("/tmp/chain.json")
 
@@ -19,9 +37,9 @@ func ReadFileAndParse() []domain.Block {
 	return data
 }
 
-func CreateAndWriteToFile(data string) {
+func CreateAndWriteToFile(data string, filepath string) {
 	//Create Temp File
-	file, err := os.Create("/tmp/chain.json")
+	file, err := os.Create(filepath)
 	if err != nil {
 		fmt.Println(err, "Error creating file!")
 		return

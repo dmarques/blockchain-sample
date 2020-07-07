@@ -10,8 +10,8 @@ import (
 func SetAllRouters(router *gin.Engine) {
 
 	SetPingRouter(router)
-	SetNewBlock(router)
-	SetGetBlockchain(router)
+	SetTransactionRouter(router)
+	SetBlockchainRouter(router)
 }
 
 func SetPingRouter(router *gin.Engine) {
@@ -20,10 +20,14 @@ func SetPingRouter(router *gin.Engine) {
 	})
 }
 
-func SetNewBlock(router *gin.Engine) {
-	router.POST("/block", controllers.CreateNewBlock)
+func SetTransactionRouter(router *gin.Engine) {
+	router.GET("/pending_transactions", controllers.GetPendingTransactions)
+
+	router.POST("/transaction", controllers.CreateTransaction)
+	router.POST("/mine", controllers.ProcessPendingTransactions)
 }
 
-func SetGetBlockchain(router *gin.Engine) {
+func SetBlockchainRouter(router *gin.Engine) {
 	router.GET("/chain", controllers.GetBlockchain)
+
 }

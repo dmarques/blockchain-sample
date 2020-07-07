@@ -22,6 +22,10 @@ func ConfigChainFile() {
 		return
 	}
 
-	utils.CreateAndWriteToFile(string(b))
+	//Create the file that contains the Chain
+	utils.CreateChainFile(string(b))
+
+	//Create the pending process empty file
+	utils.CreatePendingTransactionFile("[]")
 
 }

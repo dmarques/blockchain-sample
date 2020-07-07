@@ -11,25 +11,25 @@ import (
 
 func CreateGenesisBlock() domain.Block {
 	return domain.Block{
-		Index:        0,
-		DateCreated:  time.Now(),
-		Data:         "genesis_block",
+		DateCreated: time.Now(),
+		Data: domain.Transactions{
+			domain.Transaction{
+				FromAddress: "genesis_block",
+				ToAddress:   "genesis_block",
+				Amount:      0,
+			},
+		},
 		PreviousHash: "",
-		Hash:         GenerateHash(0, time.Now(), "genesis_block", "", 0),
+		Hash:         GenerateHash(time.Now(), domain.Transactions{domain.Transaction{FromAddress: "genesis_block", ToAddress: "genesis_block", Amount: 0}}, "", 0),
 		Nonce:        0,
 	}
 }
 
-func AddNewBlock(block domain.Block) {
+//Add processed block into Chain
+func AddBlockToChain(block domain.Block) {
 
-	//Difficulty to mine
-	difficulty := 4
-
-	//Mining the new Block
-	Mine(difficulty, &block)
-
-	//parser arquivo /tmp/json e add
-	chain := utils.ReadFileAndParse()
+	//Parser arquivo /tmp/chain.json e add
+	chain := utils.ReadChainFileAndParse()
 	chain = append(chain, block)
 
 	//Convert Struct to JSON File
@@ -39,12 +39,12 @@ func AddNewBlock(block domain.Block) {
 		return
 	}
 
-	utils.CreateAndWriteToFile(string(b))
+	utils.CreateChainFile(string(b))
 }
 
 func GetLastestBlock() domain.Block {
 
-	chain := utils.ReadFileAndParse()
+	chain := utils.ReadChainFileAndParse()
 	lastBlock := chain[len(chain)-1]
 
 	return lastBlock
