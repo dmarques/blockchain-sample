@@ -5,7 +5,7 @@ Check out the concept and usage of Blockchain in this post: https://www.guru99.c
 
 **Important**: When you run the application, a temporary json file will be created in the folder ```/tmp/chain.json```
 
-#### Checking the chain
+### Checking the chain
 
 In the chain there will be only the genesis block at the beginning.
 
@@ -31,7 +31,7 @@ GET: ```/chain```
 
 ```
 
-#### Creating transaction
+### Creating transaction
 
 POST: ```/transaction```
 
@@ -44,7 +44,7 @@ POST: ```/transaction```
 }
 ```
 
-#### Pending transactions
+### Pending transactions
 
 The transaction that you create will storage in the folder ```/tmp/pending_transactions.json```
 
@@ -64,7 +64,7 @@ GET: ```/pending_transactions```
 ```
 
 
-#### Processing transaction
+### Processing transaction
 
 POST: ```/mine```
 
@@ -121,7 +121,7 @@ GET: ```/chain```
 ```
 
 
-#### TO DO
+### TO DO
 
 - Sign the transaction with public and private key
 - Validate the chain if is valid with the keys
