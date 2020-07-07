@@ -4,7 +4,7 @@ A simple Blockchain example concept implemented in an API made with Golang
 Check out the concept and usage of Blockchain in this post: https://www.guru99.com/blockchain-tutorial.html
 
 **Important**: When you run the application, a temporary json file will be created in the folder ```/tmp/chain.json```
-<br />
+
 #### Checking the chain
 
 In the chain there will be only the genesis block at the beginning.
@@ -30,7 +30,7 @@ GET: ```/chain```
 ]
 
 ```
-<br />
+
 #### Creating transaction
 
 POST: ```/transaction```
@@ -43,7 +43,7 @@ POST: ```/transaction```
     "amount": 95.5
 }
 ```
-<br />
+
 #### Pending transactions
 
 The transaction that you create will storage in the folder ```/tmp/pending_transactions.json```
@@ -63,7 +63,7 @@ GET: ```/pending_transactions```
 ]
 ```
 
-<br />
+
 #### Processing transaction
 
 POST: ```/mine```
@@ -120,7 +120,7 @@ GET: ```/chain```
 ]
 ```
 
-<br />
+
 #### TO DO
 
 - Sign the transaction with public and private key
